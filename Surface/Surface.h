@@ -20,6 +20,8 @@ struct CGValues {
 
 @interface Surface : UIView
 
+    //////////////////////////////////////// Propiedades //////////////////////////////////////////
+
     // Propiedades variables de sizes and origins
     @property (nonatomic) float height;
     @property (nonatomic) float width;
@@ -51,15 +53,25 @@ struct CGValues {
     // Grid
     @property (retain, nonatomic) NSString *general_grid;
 
-    // Contructors & Contructores //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////// Metodos /////////////////////////////////////////
+
+    // Constructors & Constructores //
     - (void)start;
     - (id)initFullSize:(UIViewController *)acontroller grid:(NSString *)agrid display:(BOOL )adisplay params:(NSString *)aparams;
 
-    // Frames
+    // Frame Values
     - (void)setMarginsleft:(float)aleft top:(float)atop right:(float)aright bottom:(float)abottom;
     - (void)setPaddingsleft:(float)aleft top:(float)atop right:(float)aright bottom:(float)abottom;
     - (void)setOrigins_x:(float)ax y:(float)ay;
     - (void)setSizes_width:(float)awidth height:(float)aheight;
+
+    // Scroll
+    - (void)generateScroll;
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
 @end

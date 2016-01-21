@@ -28,7 +28,7 @@
     
     if ( self = [super init] ) {
         
-        // Inizialize margins, padding, parent, childre, amd screen sizes
+        // Inizialize margins, padding, parent, childre, and screen sizes
         [self start];
         
         // Save the original values of the Surface
@@ -46,6 +46,10 @@
         self.box.frame = self.general_frame;
         self.box.backgroundColor = [UIColor redColor];
         
+        // Generate scroll
+        [self generateScroll];
+        
+        // Check to display the Surface
         if ( adisplay ) {
             
             [acontroller.view addSubview:self.box];
@@ -53,8 +57,28 @@
         
     }
     
-    
     return self;
+}
+
+- (void)generateScroll {
+    
+    self.layout_x = self.padding.left;
+    self.layout_y = self.padding.top;
+    
+    if ( [self.general_grid isEqualToString:@"horizontal"] ) {
+        
+        self.scroll = [[UIScrollView alloc] initWithFrame:self.box.bounds];
+        self.scroll.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        self.scroll.contentSize = CGSizeMake(0, self.scroll.frame.size.height);
+        [self.box addSubview:self.scroll];
+        
+    } else if ( [self.general_grid isEqualToString:@"fluid"] ) {
+        
+        self.scroll = [[UIScrollView alloc] initWithFrame:self.box.bounds];
+        self.scroll.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        self.scroll.contentSize = CGSizeMake(self.scroll.frame.size.width, 0);
+        [self.box addSubview:self.scroll];
+    }
 }
 
 - (void)setMarginsleft:(float)aleft top:(float)atop right:(float)aright bottom:(float)abottom {
