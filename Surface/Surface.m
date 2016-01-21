@@ -38,13 +38,54 @@
         self.general_grid = agrid; // Save grid
         self.vc = acontroller; // Save controller
         [self setSizes_width:self.screenWidth height:self.screenHeight]; // Save the new sizes in the original frame
-        [self setOrigins_x:0 y:0]; // Save the nwe origins
+        [self setOrigins_x:0 y:0]; // Save the new origins
         [self setPaddingsleft:20 top:20 right:20 bottom:20]; // Set in paddings
         
         // Inizialize box and porperty of the box
         self.box = [[UIView alloc] init];
         self.box.frame = self.general_frame;
         self.box.backgroundColor = [UIColor redColor];
+        
+        // Generate scroll
+        [self generateScroll];
+        
+        // Check to display the Surface
+        if ( adisplay ) {
+            
+            [acontroller.view addSubview:self.box];
+        }
+        
+    }
+    
+    return self;
+}
+
+- (id)initWithSizeWidth:(float)awidth height:(float)aheight controller:(UIViewController *)acontroller grid:(NSString *)agrid display:(BOOL)adisplay params:(NSString *)aparams {
+    
+    if ( self = [super init] ) {
+       
+        // Inizialize margins, padding, parent, childre, and screen sizes
+        [self start];
+        
+        // Save the original values of the Surface
+        self.width = awidth;
+        self.height = aheight;
+        
+        self.general_grid = agrid; // Save grid
+        self.vc = acontroller; // Save controller
+        
+        awidth = awidth != -1 ? awidth : self.screenWidth;
+        aheight = aheight != -1 ? aheight : self.screenHeight;
+        
+        [self setSizes_width:awidth height:aheight]; // Save the new sizes in the original frame
+        
+        [self setOrigins_x:0 y:0]; // Save the new origins
+        [self setPaddingsleft:20 top:20 right:20 bottom:20]; // Set paddings
+        [self setMarginsleft:0 top:0 right:0 bottom:20]; // Set paddings
+        
+        self.box = [[UIView alloc] init];
+        self.box.frame = self.general_frame;
+        self.box.backgroundColor = [UIColor greenColor];
         
         // Generate scroll
         [self generateScroll];

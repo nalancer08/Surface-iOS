@@ -61,6 +61,7 @@ struct CGValues {
     // Constructors & Constructores //
     - (void)start;
     - (id)initFullSize:(UIViewController *)acontroller grid:(NSString *)agrid display:(BOOL )adisplay params:(NSString *)aparams;
+    - (id)initWithSizeWidth:(float)awidth height:(float)aheight controller:(UIViewController *)acontroller grid:(NSString *)agrid display:(BOOL)adisplay params:(NSString *)aparams;
 
     // Frame Values
     - (void)setMarginsleft:(float)aleft top:(float)atop right:(float)aright bottom:(float)abottom;

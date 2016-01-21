@@ -19,6 +19,7 @@
     [super viewDidLoad];
     
     Surface *surface1 = [[Surface alloc] initFullSize:self grid:@"fluid" display:YES params:nil];
+    Surface *surface2 = [[Surface alloc] initWithSizeWidth:-1 height:250 controller:self grid:@"fkuid" display:YES params:nil];
 }
 
 - (void)didReceiveMemoryWarning {
