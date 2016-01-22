@@ -62,6 +62,7 @@ struct CGValues {
     - (void)start;
     - (id)initFullSize:(UIViewController *)acontroller grid:(NSString *)agrid display:(BOOL )adisplay params:(NSString *)aparams;
     - (id)initWithSizeWidth:(float)awidth height:(float)aheight controller:(UIViewController *)acontroller grid:(NSString *)agrid display:(BOOL)adisplay params:(NSString *)aparams;
+    - (id)initWithView:(UIView *)aview;
 
     // Frame Values
     - (void)setMarginsleft:(float)aleft top:(float)atop right:(float)aright bottom:(float)abottom;
@@ -69,8 +70,14 @@ struct CGValues {
     - (void)setOrigins_x:(float)ax y:(float)ay;
     - (void)setSizes_width:(float)awidth height:(float)aheight;
 
+    - (void)add:(NSString *)object width:(float)awidth heigth:(float)aheigth key:(NSString *)akey params:(NSMutableDictionary *)aparams controller:(UIViewController *)acontroller;
+
     // Scroll
     - (void)generateScroll;
+
+    - (CGRect)frame:(float)awidth heigth:(float)aheigth;
+
+    - (void)layout;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
