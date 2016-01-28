@@ -18,9 +18,7 @@
     self.parent = nil;
     self.children = [[NSMutableDictionary alloc] init];
     
-    self.screenRect = [[UIScreen mainScreen] bounds];
-    self.screenWidth = self.screenRect.size.width;
-    self.screenHeight = self.screenRect.size.height;
+    [self getScreenSize];
     
 }
 
@@ -183,6 +181,16 @@
     self.scroll.contentSize = CGSizeMake(self.screenWidth, self.layout_y);
 }
 
+- (void)update {
+    
+    if ( self.parent == nil || self.parent == NULL ) {
+        
+        [self getScreenSize];
+        self.box.frame = CGRectMake(self.position_x, self.position_y, self.screenWidth, self.screenHeight);
+        [self generateScroll];
+    }
+}
+
 
 // ADDS
 
@@ -264,5 +272,13 @@
     self.general_frame = frame;
 }
 
+- (void)getScreenSize {
+    
+    self.screenRect = [[UIScreen mainScreen] bounds];
+    self.screenWidth = self.screenRect.size.width;
+    self.screenHeight = self.screenRect.size.height;
+    NSLog(@"screen width = %f and heigth = %f", self.screenWidth, self.screenHeight);
+    
+}
 
 @end

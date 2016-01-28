@@ -7,9 +7,12 @@
 //
 
 #import "ViewController.h"
-#import "Surface.h"
 
-@interface ViewController ()
+
+@interface ViewController () {
+    
+    Surface *surface1;
+}
 
 @end
 
@@ -18,7 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    Surface *surface1 = [[Surface alloc] initFullSize:self grid:@"fluid" display:YES params:nil];
+    UIDevice *device = [UIDevice currentDevice];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:device];
+    
+    surface1 = [[Surface alloc] initFullSize:self grid:@"fluid" display:YES params:nil];
     //Surface *surface2 = [[Surface alloc] initWithSizeWidth:-1 height:150 controller:self grid:@"fluid" display:YES params:nil];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"text" : @"Hola textooooooo!!!"}];
@@ -39,6 +46,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)orientationChanged:(NSNotification *)note {
+    NSLog(@"me movi");
+    [surface1 update];
 }
 
 @end
