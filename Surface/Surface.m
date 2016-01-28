@@ -177,12 +177,52 @@
 
 }
 
+- (void)updateScroll {
+    
+    [self layout];
+    self.scroll.contentSize = CGSizeMake(self.screenWidth, self.layout_y);
+}
+
 
 // ADDS
 
 - (void)add:(NSString *)object width:(float)awidth heigth:(float)aheigth key:(NSString *)akey params:(NSMutableDictionary *)aparams controller:(UIViewController *)acontroller {
     
+    NSArray *items = @[@"text", @"image", @"text_field"];
+    NSInteger item = [items indexOfObject:object];
     
+    UILabel *label;
+    //UIImageView *image;
+    [self layout];
+    CGRect frame = [self frame:awidth heigth:aheigth];
+    Surface *child;
+    
+    switch (item) {
+        case 0:
+            
+            label = [[UILabel alloc] init];
+            if ( [aparams objectForKey:@"text"] ) {
+                
+                [label setText:[aparams objectForKey:@"text"]];
+                [label setBackgroundColor:[UIColor whiteColor]];
+            }
+            
+            //if ( [aparams objectForKey:@"font"] ) {NSLog(@"hay font");} else {NSLog(@"no hay font");}
+            
+            label.frame = frame;
+            
+            child = [[Surface alloc] initWithView:label];
+            child.parent = self;
+            
+            [self.children setObject:child forKey:akey];
+            
+            [self.scroll addSubview:child.box];
+            
+            break;
+    }
+    
+    [self updateScroll];
+
 }
 
 
