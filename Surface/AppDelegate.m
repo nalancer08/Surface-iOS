@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "Launch.h"
 
 @interface AppDelegate ()
 
@@ -25,10 +26,12 @@
     ViewController *uno = [[ViewController alloc] init];
     UINavigationController *unoController = [[UINavigationController alloc] initWithRootViewController:uno];
     
+    Launch *launch = [[Launch alloc] init];
+    
     UITabBarController *tab = [[UITabBarController alloc]init];
     
     [tab setViewControllers:@[unoController]];
-    self.window.rootViewController = tab;
+    self.window.rootViewController = launch;
     
     
     [self.window makeKeyAndVisible];

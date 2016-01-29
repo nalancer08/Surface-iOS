@@ -42,7 +42,8 @@
         // Inizialize box and porperty of the box
         self.box = [[UIView alloc] init];
         self.box.frame = self.general_frame;
-        self.box.backgroundColor = [UIColor redColor];
+        //self.box.backgroundColor = [UIColor redColor];
+        self.box.backgroundColor = [UIColor colorWithRed:0.717 green:0.97 blue:0.87 alpha:1.0];
         
         // Generate scroll
         [self generateScroll];
@@ -188,6 +189,18 @@
         [self getScreenSize];
         self.box.frame = CGRectMake(self.position_x, self.position_y, self.screenWidth, self.screenHeight);
         [self generateScroll];
+        [self updateScroll];
+        
+    } else {
+        
+        CGRect frame = [self frame:self.width heigth:self.height];
+        self.frame = CGRectMake(self.general_frame.origin.x, self.general_frame.origin.y, frame.size.width, frame.size.height);
+    }
+    
+    for( NSString* key in self.children ) {
+        
+        Surface *surf = [self.children valueForKey:key];
+        [surf update];
     }
 }
 
@@ -200,7 +213,7 @@
     NSInteger item = [items indexOfObject:object];
     
     UILabel *label;
-    //UIImageView *image;
+    UIImageView *image;
     [self layout];
     CGRect frame = [self frame:awidth heigth:aheigth];
     Surface *child;
@@ -222,8 +235,34 @@
             child = [[Surface alloc] initWithView:label];
             child.parent = self;
             
+            child.width = awidth;
+            child.height = aheigth;
+            
             [self.children setObject:child forKey:akey];
             
+            [self.scroll addSubview:child.box];
+            
+            break;
+            
+        case 1:
+            
+            image = [[UIImageView alloc] init];
+            
+            if ( [aparams objectForKey:@"name"] && [[aparams objectForKey:@"name"] length ] != 0 ) {
+                
+                NSString *name = [aparams objectForKey:@"name"];
+                image.image = [UIImage imageNamed:name];
+                
+            }
+            
+            image.frame = frame;
+            child = [[Surface alloc] initWithView:image];
+            child.parent = self;
+            
+            child.width = awidth;
+            child.height = aheigth;
+            
+            [self.children setObject:child forKey:akey];
             [self.scroll addSubview:child.box];
             
             break;
@@ -277,7 +316,7 @@
     self.screenRect = [[UIScreen mainScreen] bounds];
     self.screenWidth = self.screenRect.size.width;
     self.screenHeight = self.screenRect.size.height;
-    NSLog(@"screen width = %f and heigth = %f", self.screenWidth, self.screenHeight);
+    //NSLog(@"screen width = %f and heigth = %f", self.screenWidth, self.screenHeight);
     
 }
 

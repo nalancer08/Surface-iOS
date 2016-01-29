@@ -40,6 +40,10 @@
     [surface1 add:@"text" width:-1 heigth:35 key:@"label8" params:params controller:self];
     [surface1 add:@"text" width:-1 heigth:35 key:@"label9" params:params controller:self];
     [surface1 add:@"text" width:-1 heigth:35 key:@"label10" params:params controller:self];
+    [surface1 add:@"text" width:-1 heigth:35 key:@"label11" params:params controller:self];
+    [surface1 add:@"text" width:-1 heigth:35 key:@"label12" params:params controller:self];
+    [surface1 add:@"text" width:-1 heigth:35 key:@"label13" params:params controller:self];
+
     
 }
 
