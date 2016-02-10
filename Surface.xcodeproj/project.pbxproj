@@ -39,8 +39,8 @@
 		88B19F281C6BA29C00FB0762 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		88B19F2A1C6BA2A300FB0762 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		88B19F2C1C6BA2A800FB0762 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		88B19F2F1C6BC41600FB0762 /* Sparrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sparrow.h; sourceTree = "<group>"; };
-		88B19F301C6BC41600FB0762 /* Sparrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sparrow.m; sourceTree = "<group>"; };
+		88B19F2F1C6BC41600FB0762 /* Sparrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sparrow.h; path = ../Sparrow.h; sourceTree = "<group>"; };
+		88B19F301C6BC41600FB0762 /* Sparrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sparrow.m; path = ../Sparrow.m; sourceTree = "<group>"; };
 		88D263C71C5BD20900A38D97 /* Launch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Launch.h; sourceTree = "<group>"; };
 		88D263C81C5BD20900A38D97 /* Launch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Launch.m; sourceTree = "<group>"; };
 		A7CD228E1C50881F007CE2AC /* Surface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surface.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,8 +93,6 @@
 		A7CD22851C50881F007CE2AC = {
 			isa = PBXGroup;
 			children = (
-				88B19F2F1C6BC41600FB0762 /* Sparrow.h */,
-				88B19F301C6BC41600FB0762 /* Sparrow.m */,
 				88B19F1B1C6B9F9F00FB0762 /* robot3.png */,
 				88B19F1C1C6B9F9F00FB0762 /* robot4.png */,
 				88B19F1D1C6B9F9F00FB0762 /* robot1.png */,
@@ -135,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				A7CD22921C50881F007CE2AC /* main.m */,
+				88B19F2F1C6BC41600FB0762 /* Sparrow.h */,
+				88B19F301C6BC41600FB0762 /* Sparrow.m */,
 				A7CD22A81C508A21007CE2AC /* Surface.h */,
 				A7CD22A91C508A21007CE2AC /* Surface.m */,
 			);

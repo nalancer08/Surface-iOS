@@ -8,6 +8,7 @@
 
 #import "Launch.h"
 #import "MyScene.h"
+#import "Sparrow.h"
 
 @interface Launch ()
 
@@ -28,7 +29,13 @@
     NSMutableDictionary *logo = [NSMutableDictionary dictionaryWithDictionary:@{@"name" : @"logo-tertulia", @"position": @"center"}];
     [launch add:@"image" width:290 heigth:290 key:@"logo" params:logo controller:self];
     
-    UIImage* mars = [UIImage imageNamed:@"header"];
+    Sparrow *img = [[Sparrow alloc] init];
+    [img loadImageWithName:@"header"];
+    [img setWidthSprite:512];
+    [img setTimer:5];
+    [img run:NO];
+    
+    /*UIImage* mars = [UIImage imageNamed:@"header"];
     CGSize sz = [mars size];
     UIGraphicsBeginImageContextWithOptions(
                                            CGSizeMake(sz.width/2.0, sz.height), NO, 0);
@@ -37,9 +44,9 @@
     UIGraphicsEndImageContext();
     
     UIImageView *la = [[UIImageView alloc] initWithFrame:CGRectMake(250, 350, 100, 100)];
-    la.image = im;
+    la.image = im;*/
     
-    [self.view addSubview:la];
+    //[self.view addSubview:la];
 }
 
 - (void)didReceiveMemoryWarning {
