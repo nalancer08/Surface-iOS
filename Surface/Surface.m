@@ -43,7 +43,9 @@
         self.box = [[UIView alloc] init];
         self.box.frame = self.general_frame;
         //self.box.backgroundColor = [UIColor redColor];
-        self.box.backgroundColor = [UIColor colorWithRed:0.717 green:0.97 blue:0.87 alpha:1.0];
+        //self.box.backgroundColor = [UIColor colorWithRed:0.717 green:0.97 blue:0.87 alpha:1.0];
+        self.box.backgroundColor = [UIColor clearColor];
+        //self.box.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cheeseburger"]];
         
         // Generate scroll
         [self generateScroll];
@@ -255,6 +257,16 @@
                 
             }
             
+            if ( [aparams objectForKey:@"position"] ) {
+                
+                NSString *position = [aparams objectForKey:@"position"];
+                if ( [position isEqualToString:@"center"] ) {
+                    frame = [self setPosition:position frame:frame];
+                }
+                
+                
+            }
+            
             image.frame = frame;
             child = [[Surface alloc] initWithView:image];
             child.parent = self;
@@ -318,6 +330,19 @@
     self.screenHeight = self.screenRect.size.height;
     //NSLog(@"screen width = %f and heigth = %f", self.screenWidth, self.screenHeight);
     
+}
+
+- (CGRect)setPosition:(NSString *)position frame:(CGRect)aframe {
+
+    float x;
+    float y;
+    
+    x = ( self.box.bounds.size.width - aframe.size.width ) / 2;
+    y = ( self.box.bounds.size.height - aframe.size.height ) / 2;
+    
+    CGRect new = CGRectMake(x, y, aframe.size.width, aframe.size.height);
+     NSLog(@"x== %f and y== %f", x, y);
+    return new;
 }
 
 @end

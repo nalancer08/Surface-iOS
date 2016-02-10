@@ -19,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [NSThread sleepForTimeInterval:.3];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     NSLog(@"x == %f", [[UIScreen mainScreen] bounds].size.width);
     NSLog(@"y == %f", [[UIScreen mainScreen] bounds].size.height);
