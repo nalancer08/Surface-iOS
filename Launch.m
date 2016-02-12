@@ -29,11 +29,13 @@
     NSMutableDictionary *logo = [NSMutableDictionary dictionaryWithDictionary:@{@"name" : @"logo-tertulia", @"position": @"center"}];
     [launch add:@"image" width:290 heigth:290 key:@"logo" params:logo controller:self];
     
-    /*Sparrow *img = [[Sparrow alloc] init];
-    [img loadImageWithName:@"header"];
-    [img setWidthSprite:512];
-    [img setTimer:5];
-    [img run:NO];*/
+    Sparrow *img = [[Sparrow alloc] init];
+    img.frame = CGRectMake(0, 10, 136, 90);
+    [img loadImageWithName:@"carro" In:self];
+    [img setWidthSprite:136 Height:90];
+    [img setTimer:.1];
+    [img run:YES];
+    //[self.view addSubview:img];
     
     /*
     UIImage *test = [UIImage imageNamed:@"a"];
@@ -55,8 +57,8 @@
     la1.frame = CGRectMake(370, 250, 100, 100);
     [self.view addSubview:la1];*/
     
-    CGSize szsprite = CGSizeMake(136, 90);
-    float sprite = 2;
+    /*CGSize szsprite = CGSizeMake(136, 90);
+    float sprite = 0;
     float offset_x = (sprite)*-szsprite.width;
     
     UIImage* mars = [UIImage imageNamed:@"carrito"];
@@ -72,7 +74,7 @@
     UIGraphicsEndImageContext();
     UIImageView *la = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, szsprite.width, szsprite.height)];
     la.image = im;
-    [self.view addSubview:la];
+    [self.view addSubview:la];*/
     
     
     
@@ -121,7 +123,7 @@
     [self.view addSubview:imageView];*/
 
     
-   [self.view addSubview:la];
+   //[self.view addSubview:la];
 }
 
 - (void)didReceiveMemoryWarning {
