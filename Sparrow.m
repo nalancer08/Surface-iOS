@@ -17,6 +17,7 @@
     self.width = self.img.size.width;
     self.height = self.img.size.height;
     self.counter = 0;
+    self.image = [[UIImageView alloc] init];
     
     NSLog(@"ancho = %f, alto= %f", self.width, self.height);
     
@@ -38,19 +39,24 @@
 
 -(void)run:(BOOL)recicle {
     
-    self.time = [NSTimer scheduledTimerWithTimeInterval:self.second target:self selector:@selector(display) userInfo:nil repeats:YES];
+    self.time = [NSTimer scheduledTimerWithTimeInterval:self.second target:self selector:@selector(display) userInfo:nil repeats:NO];
 }
 
 -(void)display {
+    
     if( self.counter < self.parts ) {
         
+        NSLog(@"conter = %i", self.counter);
         self.counter++;
+        [self run:NO];
+        
+        
     } else {
         
         [self.time invalidate];
         self.time = nil;
     }
-    NSLog(@"conter = %i", self.counter);
+    
 }
 
 @end

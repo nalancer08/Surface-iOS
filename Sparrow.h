@@ -24,6 +24,8 @@
 @property (retain, nonatomic) NSString *recicle;
 @property (retain, nonatomic) NSTimer *time;
 
+@property (retain, nonatomic) UIImageView *image;
+
 -(void)loadImageWithName:(NSString *)name;
 -(void)setWidthSprite:(float)single;
 -(void)setTimer:(float)second;
