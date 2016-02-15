@@ -30,16 +30,17 @@
     
 }
 
--(void)setTimer:(float)second {
+-(void)setTimer:(float)second withRepeat:(BOOL)repeat {
     
     self.second = second;
     self.seconds = self.second * self.parts_x;
     
+    self.recicle = repeat;
+    
 }
 
--(void)run:(BOOL)recicle {
+-(void)run {
     
-    self.recicle = recicle;
     self.time = [NSTimer scheduledTimerWithTimeInterval:self.second target:self selector:@selector(display) userInfo:nil repeats:NO];
 }
 
@@ -47,17 +48,16 @@
     
     self.image = [[UIImageView alloc] init];
     self.image.frame = self.frame;
-    [self.parent.view addSubview:self.image];
-    NSLog(@"x = %f, y = %f, w = %f, h =%f", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    //[self.parent.view addSubview:self.image];
+    [self addSubview:self.image];
+    //NSLog(@"x = %f, y = %f, w = %f, h =%f", self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
 }
 
 -(void)display {
     
     if( self.sprite < self.parts_x ) {
         
-        
         // Process the image
-        
         self.offset_x = ( (self.sprite)*(-self.size_sprite.width) );
         UIGraphicsBeginImageContextWithOptions(self.size_sprite, NO, 0);
         [self.img drawAtPoint:CGPointMake(self.offset_x, 0)];
@@ -69,7 +69,7 @@
         
         NSLog(@"conter = %i", self.sprite);
         self.sprite++;
-        [self run:YES];
+        [self run];
         
         
     } else {
@@ -77,7 +77,7 @@
         if(self.recicle == YES) {
             
             self.sprite = 0;
-            [self run:YES];
+            [self run];
         
         } else {
             [self.time invalidate];

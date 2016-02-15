@@ -284,6 +284,38 @@
 
 }
 
+- (void)addCustom:(UIView *)aview key:(NSString *)akey params:(NSMutableDictionary *)aparams controller:(UIViewController *)acontroller {
+    
+    float width = aview.frame.size.width;
+    float heigth = aview.frame.size.height;
+    [self layout];
+    CGRect frame = [self frame:width heigth:heigth];
+    Surface *child;
+    
+    if ( [aparams objectForKey:@"position"] ) {
+        
+        NSString *position = [aparams objectForKey:@"position"];
+        if ( [position isEqualToString:@"center"] ) {
+            frame = [self setPosition:position frame:frame];
+        }
+        
+        
+    }
+    
+    aview.frame = frame;
+    
+    child = [[Surface alloc] initWithView:aview];
+    child.parent = self;
+    
+    child.width = width;
+    child.height = heigth;
+    
+    [self.children setObject:child forKey:akey];
+    
+    [self.scroll addSubview:child.box];
+    
+}
+
 
 // HELPERS
 

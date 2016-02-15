@@ -39,8 +39,8 @@
 
 -(void)loadImageWithName:(NSString *)name In:(UIViewController *)controller;
 -(void)setWidthSprite:(float)width Height:(float)height;
--(void)setTimer:(float)second;
--(void)run:(BOOL)recicle;
+-(void)setTimer:(float)second withRepeat:(BOOL)repeat;
+-(void)run;
 -(void)display;
 -(void)initImage;
 

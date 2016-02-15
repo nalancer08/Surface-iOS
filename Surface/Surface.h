@@ -72,6 +72,8 @@ struct CGValues {
 
     - (void)add:(NSString *)object width:(float)awidth heigth:(float)aheigth key:(NSString *)akey params:(NSMutableDictionary *)aparams controller:(UIViewController *)acontroller;
 
+    - (void)addCustom:(UIView *)aview key:(NSString *)akey params:(NSMutableDictionary *)aparams controller:(UIViewController *)acontroller;
+
     // Scroll
     - (void)generateScroll;
 

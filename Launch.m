@@ -26,16 +26,19 @@
     //NSMutableDictionary *header = [NSMutableDictionary dictionaryWithDictionary:@{@"name" : @"header"}];
     //[launch add:@"image" width:-1 heigth:200 key:@"header" params:header controller:self];
     
-    NSMutableDictionary *logo = [NSMutableDictionary dictionaryWithDictionary:@{@"name" : @"logo-tertulia", @"position": @"center"}];
-    [launch add:@"image" width:290 heigth:290 key:@"logo" params:logo controller:self];
+    //NSMutableDictionary *logo = [NSMutableDictionary dictionaryWithDictionary:@{@"name" : @"logo-tertulia", @"position": @"center"}];
+    //[launch add:@"image" width:290 heigth:290 key:@"logo" params:logo controller:self];
     
     Sparrow *img = [[Sparrow alloc] init];
-    img.frame = CGRectMake(0, 10, 136, 90);
-    [img loadImageWithName:@"carro" In:self];
-    [img setWidthSprite:136 Height:90];
-    [img setTimer:.1];
-    [img run:YES];
+    img.frame = CGRectMake(0, 10, 300, 300);
+    [img loadImageWithName:@"logoTertulia" In:self];
+    [img setWidthSprite:300 Height:300];
+    [img setTimer:.03 withRepeat:NO];
+    [img run];
     //[self.view addSubview:img];
+    
+    NSMutableDictionary *logo1 = [NSMutableDictionary dictionaryWithDictionary:@{@"position": @"center"}];
+    [launch addCustom:img key:@"animation1" params:logo1 controller:self];
     
     /*
     UIImage *test = [UIImage imageNamed:@"a"];
