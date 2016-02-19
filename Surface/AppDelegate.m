@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "Launch.h"
+#import "Buscador.h"
 
 @interface AppDelegate ()
 
@@ -27,7 +28,8 @@
     ViewController *uno = [[ViewController alloc] init];
     UINavigationController *unoController = [[UINavigationController alloc] initWithRootViewController:uno];
     
-    Launch *launch = [[Launch alloc] init];
+    //Launch *launch = [[Launch alloc] init];
+    Buscador *launch = [[Buscador alloc] init];
     
     UITabBarController *tab = [[UITabBarController alloc]init];
     

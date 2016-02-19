@@ -58,10 +58,11 @@
     if( self.sprite < self.parts_x ) {
         
         // Process the image
+        //CGRect rect = (CGRect){0.f, 0.f};
         self.offset_x = ( (self.sprite)*(-self.size_sprite.width) );
         UIGraphicsBeginImageContextWithOptions(self.size_sprite, NO, 0);
         [self.img drawAtPoint:CGPointMake(self.offset_x, 0)];
-        
+        //[self drawInRect:rect];
         UIImage* im = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
@@ -82,9 +83,27 @@
         } else {
             [self.time invalidate];
             self.time = nil;
+            if ( self.function && self.parent ) {
+            	[self end:self.function fromObject:self.parent];
+            }
+            
         }
     }
     
 }
+
+- (void)end:(SEL)func fromObject:(id)object {
+    
+    [object performSelector:func];
+    
+}
+
+-(void)endAnimation:(SEL)func fromObject:(id)object {
+    
+    self.function = func;
+    self.parent = object;
+
+}
+
 
 @end
