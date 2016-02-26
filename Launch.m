@@ -9,6 +9,7 @@
 #import "Launch.h"
 #import "Sparrow.h"
 #import "Buscador.h"
+#import "AFNetworking.h"
 
 @interface Launch ()
 
@@ -19,9 +20,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.data1 = [NSUserDefaults standardUserDefaults];
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Splash"]];
     
     Surface *launch = [[Surface alloc] initFullSize:self grid:@"fluid" display:YES params:nil];
+    NSString *liga = @"http://chimptest.com/tertulia_v2/api/1.0/categorias/";
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:liga parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        json = (NSDictionary *)responseObject;
+        js = json[@"data"];
+        
+        [self.data1 setObject:json[@"data"] forKey:@"categorias"];
+       
+        //NSLog(@"JSON: %@", json);
+        
+        //NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+    NSLog(@"dataaaa %@", [self.data1 objectForKey:@"categorias"]);
     
     //NSMutableDictionary *header = [NSMutableDictionary dictionaryWithDictionary:@{@"name" : @"header"}];
     //[launch add:@"image" width:-1 heigth:200 key:@"header" params:header controller:self];
@@ -50,9 +70,13 @@
 }
 
 -(void)alerta {
+    
     NSLog(@"lalitas jalando bn chido");
     Buscador *buscador = [[Buscador alloc] init];
-    [self presentViewController:buscador animated:YES completion:nil];
+    if ( [self.data1 objectForKey:@"categorias"] != NULL && [self.data1 objectForKey:@"categorias"] != nil ) {
+        [self presentViewController:buscador animated:YES completion:nil];
+    }
+    
 }
 
 

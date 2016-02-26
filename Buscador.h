@@ -24,4 +24,5 @@
 @property (retain, nonatomic) UIButton *nameStatus;
 @property (retain, nonatomic) UITableView *tbl_Search;
 @property (retain, nonatomic) UITextField *tx1;
+@property (weak, nonatomic) NSUserDefaults *data1;
 @end

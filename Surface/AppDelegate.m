@@ -28,8 +28,8 @@
     ViewController *uno = [[ViewController alloc] init];
     UINavigationController *unoController = [[UINavigationController alloc] initWithRootViewController:uno];
     
-    //Launch *launch = [[Launch alloc] init];
-    Buscador *launch = [[Buscador alloc] init];
+    Launch *launch = [[Launch alloc] init];
+    Buscador *buscador = [[Buscador alloc] init];
     
     UITabBarController *tab = [[UITabBarController alloc]init];
     

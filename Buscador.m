@@ -7,7 +7,7 @@
 //
 
 #import "Buscador.h"
-#import "AFNetworking.h"
+#import "Surface.h"
 
 @interface Buscador ()
 
@@ -18,22 +18,40 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.view.backgroundColor = [UIColor colorWithRed:0.718 green:0.976 blue:0.871 alpha:1];
-    [self.view setAlpha:1];
+    [self.view setAlpha:0];
     [UIView animateWithDuration:.65 delay:0 options:UIViewAnimationCurveEaseOut animations:^{ [self.view setAlpha:1]; }completion:nil];
+     self.tx1 = [[UITextField alloc] init];
+    self.tx1.frame = CGRectMake(-500, 30, 240, 35);
+   // self.tx1.center.x = self.view.frame.size.width;
+    
 
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    Surface *launch = [[Surface alloc] initFullSize:self grid:@"fluid" display:YES params:nil];
+    self.data1 = [NSUserDefaults standardUserDefaults];
     self.view.backgroundColor = [UIColor clearColor];
     
-    UIView *la = [[UIView alloc]initWithFrame:CGRectMake(10, 10, 200, 200)];
-    la.backgroundColor = [UIColor redColor];
-    [self.view addSubview:la];
     
-    self.tx1 = [[UITextField alloc] init];
-    self.tx1.frame = CGRectMake(30, 30, 240, 35);
+    
+    muary_Interest_Main = [[NSMutableArray alloc] init];
+    
+    json = [self.data1 objectForKey:@"categorias"];
+    //NSLog(@"%@", json);
+    
+    for( NSDictionary* key in json ) {
+        
+        //NSLog(@"key %@", key[@"nombre"]);
+        [muary_Interest_Main addObject:key[@"nombre"]];
+    }
+    NSLog(@"arreglo %@", muary_Interest_Main);
+    
+    
+    
+   
+    
     self.tx1.delegate = self;
     [self.view addSubview:self.tx1];
     
@@ -50,14 +68,24 @@
     self.tx1.returnKeyType = UIReturnKeyDone;
     self.tx1.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        _tx1.frame = CGRectMake(_tx1.frame.origin.x - 200, _tx1.frame.origin.y, _tx1.frame.size.width, _tx1.frame.size.height);
+    }];
 
-    muary_Interest_Main = [[NSMutableArray alloc]initWithObjects:@"Cricket",@"Dancing",@"Painting",@"Swiming",@"guitar",@"movie",@"boxing",@"drum",@"hockey",@"chessing",@"gamming",
-                           @"hunting",@"killing",@"shoping",@"jamm"@"zooming", @"dado", @"dedo", @"dinosaurio", @"delfin", @"dass", @"dorito", @"danonino", @"dam", @"dash", nil];
+    
+    NSMutableDictionary *logo1 = [NSMutableDictionary dictionaryWithDictionary:@{@"position": @"center"}];
+    //[launch addCustom:self.tx1 key:@"a" params:logo1 controller:self];
+    
+
+    //muary_Interest_Main = [[NSMutableArray alloc]initWithObjects:@"Cricket",@"Dancing",@"Painting",@"Swiming",@"guitar",@"movie",@"boxing",@"drum",@"hockey",@"chessing",@"gamming",
+    //@"hunting",@"killing",@"shoping",@"jamm"@"zooming", @"dado", @"dedo", @"dinosaurio", @"delfin", @"dass", @"dorito", @"danonino", @"dam", @"dash", nil];
+    
     muary_Interest_Sub = [[NSMutableArray alloc]init];
     
     
     _tbl_Search = [[UITableView alloc] initWithFrame:
-                  CGRectMake(4, 200, 320, 120) style:UITableViewStylePlain];
+                  CGRectMake(self.tx1.frame.origin.x, (self.tx1.frame.origin.y + self.tx1.frame.size.height + 5), 320, 120) style:UITableViewStylePlain];
     _tbl_Search.delegate = self;
     _tbl_Search.dataSource = self;
     _tbl_Search.scrollEnabled = YES;
@@ -161,24 +189,24 @@
     
     if(int_TextFieldTag == 1)
     {
-        _tbl_Search.frame = CGRectMake(4, 200, 320, 120);
+        _tbl_Search.frame = CGRectMake(self.tx1.frame.origin.x, (self.tx1.frame.origin.y + self.tx1.frame.size.height + 5), 320, 120);
         
     }
     else if(int_TextFieldTag == 2)
     {
-        _tbl_Search.frame = CGRectMake(4, 248, 320, 120);
+        _tbl_Search.frame = CGRectMake(self.tx1.frame.origin.x, (self.tx1.frame.origin.y + self.tx1.frame.size.height + 5), 320, 120);
     }
     else if(int_TextFieldTag == 3)
     {
-        _tbl_Search.frame = CGRectMake(4, 268, 320, 120);
+        _tbl_Search.frame = CGRectMake(self.tx1.frame.origin.x, (self.tx1.frame.origin.y + self.tx1.frame.size.height + 5), 320, 120);
     }
     else if(int_TextFieldTag == 4)
     {
-        _tbl_Search.frame = CGRectMake(4, 268, 320, 120);
+        _tbl_Search.frame = CGRectMake(self.tx1.frame.origin.x, (self.tx1.frame.origin.y + self.tx1.frame.size.height + 5), 320, 120);
     }
     else
     {
-        _tbl_Search.frame = CGRectMake(4, 268, 320, 120);
+        _tbl_Search.frame = CGRectMake(self.tx1.frame.origin.x, (self.tx1.frame.origin.y + self.tx1.frame.size.height + 5), 320, 120);
     }
     
     

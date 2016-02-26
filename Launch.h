@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Surface.h"
 
-@interface Launch : UIViewController
+@interface Launch : UIViewController {
+    NSMutableArray *data;
+    NSMutableArray *companyData;
+    NSDictionary *json;
+    NSArray *js;
+}
+
+@property (weak, nonatomic) NSUserDefaults *data1;
 
 @end
