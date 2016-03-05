@@ -88,6 +88,8 @@ struct CGValues {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     - (void)getScreenSize;
+    - (void)present;
+    - (UIView *)getObject:(NSString *)object;
 
 
 @end

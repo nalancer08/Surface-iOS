@@ -43,8 +43,8 @@
         self.box = [[UIView alloc] init];
         self.box.frame = self.general_frame;
         //self.box.backgroundColor = [UIColor redColor];
-        //self.box.backgroundColor = [UIColor colorWithRed:0.717 green:0.97 blue:0.87 alpha:1.0];
-        self.box.backgroundColor = [UIColor clearColor];
+        self.box.backgroundColor = [UIColor colorWithRed:0.717 green:0.97 blue:0.87 alpha:1.0];
+        //self.box.backgroundColor = [UIColor clearColor];
         //self.box.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cheeseburger"]];
         
         // Generate scroll
@@ -157,7 +157,7 @@
     aheigth = aheigth != -1 ? aheigth : ( self.scroll.frame.size.height - ( self.padding.top + self.padding.bottom ) );
     
     frame = CGRectMake(self.layout_x, self.layout_y, awidth, aheigth);
-    
+    NSLog(@"SurfaceW = %f y SurfaceH = %f", awidth, aheigth);
     return frame;
 }
 
@@ -211,11 +211,14 @@
 
 - (void)add:(NSString *)object width:(float)awidth heigth:(float)aheigth key:(NSString *)akey params:(NSMutableDictionary *)aparams controller:(UIViewController *)acontroller {
     
-    NSArray *items = @[@"text", @"image", @"text_field"];
+    NSArray *items = @[@"text", @"image", @"text_field", @"button"];
     NSInteger item = [items indexOfObject:object];
     
     UILabel *label;
     UIImageView *image;
+    UITextField *field;
+    UIButton *button;
+    
     [self layout];
     CGRect frame = [self frame:awidth heigth:aheigth];
     Surface *child;
@@ -277,6 +280,48 @@
             [self.children setObject:child forKey:akey];
             [self.scroll addSubview:child.box];
             
+            break;
+            
+        case 2:
+            field = [[UITextField alloc] init];
+            field.delegate = self.vc;
+            field.backgroundColor = [UIColor blueColor];
+            
+            field.frame = frame;
+            child = [[Surface alloc] initWithView:field];
+            child.parent = self;
+            
+            child.width = awidth;
+            child.height = aheigth;
+            
+            [self.children setObject:child forKey:akey];
+            [self.scroll addSubview:child.box];
+            
+            break;
+        
+        case 3:
+            
+            button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [button setTitle:@"boton chido" forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+            button.backgroundColor = [UIColor whiteColor];
+            
+            if ( [aparams objectForKey:@"function"] ) {
+                
+                SEL aSel = [[aparams objectForKey:@"function"] pointerValue];
+                [button addTarget:self.vc action:aSel forControlEvents:UIControlEventTouchUpInside];
+                
+            }
+            
+            button.frame = frame;
+            child = [[Surface alloc] initWithView:button];
+            child.parent = self;
+            
+            child.width = awidth;
+            child.height = aheigth;
+            
+            [self.children setObject:child forKey:akey];
+            [self.scroll addSubview:child.box];
             break;
     }
     
@@ -375,6 +420,20 @@
     CGRect new = CGRectMake(x, y, aframe.size.width, aframe.size.height);
      NSLog(@"x== %f and y== %f", x, y);
     return new;
+}
+
+- (UIView *)getObject:(NSString *)object {
+    
+    UIView *view;
+    Surface *conteiner = [self.children objectForKey:object];
+    view = conteiner.box;
+    return view;
+}
+
+- (void)present {
+    NSLog(@"cambiandoooo");
+    //self.box.backgroundColor = [UIColor redColor];
+    [self.vc.view addSubview:self.box];
 }
 
 @end

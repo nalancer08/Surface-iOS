@@ -17,6 +17,7 @@
     
     NSMutableArray *muary_Interest_Main;
     NSMutableArray *muary_Interest_Sub;
+    NSMutableDictionary *ids;
     int int_TextFieldTag;
     //UITableView *tbl_Search;
 }

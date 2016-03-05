@@ -34,7 +34,7 @@
     UITabBarController *tab = [[UITabBarController alloc]init];
     
     [tab setViewControllers:@[unoController]];
-    self.window.rootViewController = launch;
+    self.window.rootViewController = uno;
     
     
     [self.window makeKeyAndVisible];
