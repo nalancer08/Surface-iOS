@@ -20,6 +20,7 @@
     @property (nonatomic) float surfaceWidth;
 
     @property (retain, nonatomic) UIViewController *controller;
+    @property (retain, nonatomic) NSArray *controllers;
 
     // Surfaces
     @property (retain, nonatomic) Surface *full;
@@ -37,8 +38,8 @@
     - (void)getTabBarHeight;
 
 // TabBar
-    + (NSArray *)controllers;
     + (NSDictionary *)newController:(Class) class withTitle:(NSString *)title andImage:(UIImage *)image;
     - (void)setTabBarControllers:(NSArray *)controllers;
+    + (void)tabPress:(UIButton *)sender;
 
 @end

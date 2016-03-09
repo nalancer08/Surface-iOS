@@ -62,6 +62,9 @@
     return full;
 }*/
 
+/////////////////////////////////////////////// METHODS FOR TAB BAR /////////////////////////////////////////////////////////////////
+
+
 - (void)getTabBarHeight {
     
     UITabBarController *tabBarOriginal = [[UITabBarController alloc] init];
@@ -74,20 +77,39 @@
 - (void)setTabBarControllers:(NSArray *)controllers {
     
     //NSLog(@"controles === %@ son %lu elementos", controllers, (unsigned long)controllers.count);
-    int numberdivs = (int)controllers.count;
+    self.controllers = controllers;
+    int numberdivs = (int)self.controllers.count;
     
     NSMutableDictionary *numberOfDivs = [NSMutableDictionary dictionaryWithDictionary:@{@"colums": [NSNumber numberWithInt:numberdivs]}];
     [self.tabBar modifiedParams:numberOfDivs];
     
     
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"text" : @"Hola textooooooo!!!"}];
-    [self.tabBar add:@"button" width:-1 heigth:self.tabBarHeight key:@"t1" params:params controller:self.controller];
-    NSMutableDictionary *params2 = [NSMutableDictionary dictionaryWithDictionary:@{@"text" : @"lalitas 3000!!!"}];
+    NSMutableDictionary *params1 = [NSMutableDictionary dictionaryWithDictionary:@{@"text" : @"hola mundooo!!!", @"function" : [NSValue valueWithPointer:@selector(tabPress:)], @"newClass" : [self class], @"tag" : [NSNumber numberWithInt:1]}];
+    [self.tabBar add:@"button" width:-1 heigth:self.tabBarHeight key:@"t1" params:params1 controller:self.controller];
+    
+    /*UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle:@"boton chido" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor whiteColor];
+
+    [button addTarget:self action:@selector(tabPress:) forControlEvents:UIControlEventTouchUpInside];
+    [self.tabBar addCustom:button key:@"t1" params:nil controller:self.controller];
+*/
+    NSMutableDictionary *params2 = [NSMutableDictionary dictionaryWithDictionary:@{@"text" : @"lalitas 3000!!!", @"function" : [NSValue valueWithPointer:@selector(tabPress:)], @"newClass" : [self class], @"tag" : [NSNumber numberWithInt:12]}];
     [self.tabBar add:@"button" width:-1 heigth:self.tabBarHeight key:@"t2" params:params2 controller:self.controller];
 
     UIButton *la = (UIButton *)[self.tabBar getObject:@"t2"];
     la.backgroundColor = [UIColor yellowColor];
 }
+
++ (void)tabPress:(UIButton *)sender {
+    NSLog(@"jalando el boton en esta mierda");
+    UIButton *tab = (UIButton *)sender;
+    NSLog(@"TAG ==== %ld", (long)tab.tag);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 + (NSDictionary *)newController:(Class)class withTitle:(NSString *)title andImage:(UIImage *)image {
@@ -95,5 +117,7 @@
     return [[NSDictionary alloc] initWithObjectsAndKeys:class, @"controller", title, @"title", image, @"image", nil];
     
 }
+
+
 
 @end

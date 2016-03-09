@@ -7,6 +7,7 @@
 //
 
 #import "Surface.h"
+#import "Puppeteer.h"
 
 @implementation Surface
 
@@ -395,11 +396,19 @@
                 [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
                 button.backgroundColor = [UIColor whiteColor];
                 
-                if ( [aparams objectForKey:@"function"] ) {
+                if ( [aparams objectForKey:@"function"] && [aparams objectForKey:@"newClass"] ) {
                     
+                    NSLog(@"clase nueva == %@", [aparams objectForKey:@"newClass"] );
+                    SEL aSel = [[aparams objectForKey:@"function"] pointerValue];
+                    [button addTarget:[[aparams objectForKey:@"newClass"] class] action:aSel forControlEvents:UIControlEventTouchUpInside];
+                    
+                } else if ( [aparams objectForKey:@"function"] ) {
                     SEL aSel = [[aparams objectForKey:@"function"] pointerValue];
                     [button addTarget:self.vc action:aSel forControlEvents:UIControlEventTouchUpInside];
-                    
+                }
+                
+                if ( [aparams objectForKey:@"tag"] ) {
+                    button.tag = self.used_divs;
                 }
                 
                 button.frame = frame;
