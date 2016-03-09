@@ -26,7 +26,7 @@
     self.parts_x = self.size_image.width / self.size_sprite.width;
     self.parts_y = self.size_image.height / self.size_sprite.height;
     
-    NSLog(@"parts %i y ancho de: %f", self.parts_x, self.size_image.width);
+    //NSLog(@"parts %i y ancho de: %f", self.parts_x, self.size_image.width);
     
 }
 
@@ -68,7 +68,7 @@
         
         self.image.image = im;
         
-        NSLog(@"conter = %i", self.sprite);
+        //NSLog(@"conter = %i", self.sprite);
         self.sprite++;
         [self run];
         

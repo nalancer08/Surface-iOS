@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8832D3F31C90841F00EC1D9C /* WebchimpUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8832D3F21C90841F00EC1D9C /* WebchimpUtilities.m */; };
+		8832D3F61C908EC700EC1D9C /* Puppeteer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8832D3F51C908EC700EC1D9C /* Puppeteer.m */; };
+		8832D3F91C9090AF00EC1D9C /* TestPuppeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8832D3F81C9090AF00EC1D9C /* TestPuppeter.m */; };
 		88B19F171C6A67C200FB0762 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B19F141C6A67C200FB0762 /* Default.png */; };
 		88B19F181C6A67C200FB0762 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B19F151C6A67C200FB0762 /* Default@2x.png */; };
 		88B19F1A1C6A6DF700FB0762 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B19F191C6A6DF700FB0762 /* Default-568h@2x.png */; };
@@ -45,6 +48,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8832D3F11C90841F00EC1D9C /* WebchimpUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebchimpUtilities.h; sourceTree = "<group>"; };
+		8832D3F21C90841F00EC1D9C /* WebchimpUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebchimpUtilities.m; sourceTree = "<group>"; };
+		8832D3F41C908EC700EC1D9C /* Puppeteer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puppeteer.h; sourceTree = "<group>"; };
+		8832D3F51C908EC700EC1D9C /* Puppeteer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Puppeteer.m; sourceTree = "<group>"; };
+		8832D3F71C9090AF00EC1D9C /* TestPuppeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPuppeter.h; sourceTree = "<group>"; };
+		8832D3F81C9090AF00EC1D9C /* TestPuppeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPuppeter.m; sourceTree = "<group>"; };
 		88B19F141C6A67C200FB0762 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		88B19F151C6A67C200FB0762 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		88B19F191C6A6DF700FB0762 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -233,6 +242,8 @@
 				A7CD22951C50881F007CE2AC /* AppDelegate.m */,
 				A7CD22971C50881F007CE2AC /* ViewController.h */,
 				A7CD22981C50881F007CE2AC /* ViewController.m */,
+				8832D3F71C9090AF00EC1D9C /* TestPuppeter.h */,
+				8832D3F81C9090AF00EC1D9C /* TestPuppeter.m */,
 				A7CD229D1C50881F007CE2AC /* Assets.xcassets */,
 				A7CD22A21C50881F007CE2AC /* Info.plist */,
 				A7CD22911C50881F007CE2AC /* Supporting Files */,
@@ -248,6 +259,10 @@
 				88E003101C7784E100A85F80 /* Parrot.m */,
 				88B19F2F1C6BC41600FB0762 /* Sparrow.h */,
 				88B19F301C6BC41600FB0762 /* Sparrow.m */,
+				8832D3F41C908EC700EC1D9C /* Puppeteer.h */,
+				8832D3F51C908EC700EC1D9C /* Puppeteer.m */,
+				8832D3F11C90841F00EC1D9C /* WebchimpUtilities.h */,
+				8832D3F21C90841F00EC1D9C /* WebchimpUtilities.m */,
 				A7CD22A81C508A21007CE2AC /* Surface.h */,
 				A7CD22A91C508A21007CE2AC /* Surface.m */,
 			);
@@ -337,11 +352,14 @@
 				88B19F311C6BC41600FB0762 /* Sparrow.m in Sources */,
 				88F83B7B1C761E9600F6C551 /* AFURLResponseSerialization.m in Sources */,
 				88F83B801C761E9600F6C551 /* UIButton+AFNetworking.m in Sources */,
+				8832D3F91C9090AF00EC1D9C /* TestPuppeter.m in Sources */,
 				88F83B4C1C761BCC00F6C551 /* Buscador.m in Sources */,
+				8832D3F31C90841F00EC1D9C /* WebchimpUtilities.m in Sources */,
 				88F83B7E1C761E9600F6C551 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				88F83B7A1C761E9600F6C551 /* AFURLRequestSerialization.m in Sources */,
 				88E003111C7784E100A85F80 /* Parrot.m in Sources */,
 				88F83B7D1C761E9600F6C551 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				8832D3F61C908EC700EC1D9C /* Puppeteer.m in Sources */,
 				88F83B781C761E9600F6C551 /* AFSecurityPolicy.m in Sources */,
 				88F83B741C761E9600F6C551 /* AFHTTPRequestOperation.m in Sources */,
 				88F83B7C1C761E9600F6C551 /* AFURLSessionManager.m in Sources */,

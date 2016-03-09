@@ -41,7 +41,7 @@
         NSLog(@"Error: %@", error);
     }];
     
-    NSLog(@"dataaaa %@", [self.data1 objectForKey:@"categorias"]);
+    //NSLog(@"dataaaa %@", [self.data1 objectForKey:@"categorias"]);
     
     //NSMutableDictionary *header = [NSMutableDictionary dictionaryWithDictionary:@{@"name" : @"header"}];
     //[launch add:@"image" width:-1 heigth:200 key:@"header" params:header controller:self];
@@ -58,7 +58,7 @@
     [img run];
     //[self.view addSubview:img];
     
-    NSMutableDictionary *logo1 = [NSMutableDictionary dictionaryWithDictionary:@{@"position": @"center"}];
+    NSMutableDictionary *logo1 = [NSMutableDictionary dictionaryWithDictionary:@{@"position": @"bottom"}];
     [launch addCustom:img key:@"animation1" params:logo1 controller:self];
     
 
@@ -71,7 +71,7 @@
 
 -(void)alerta {
     
-    NSLog(@"lalitas jalando bn chido");
+    //NSLog(@"lalitas jalando bn chido");
     Buscador *buscador = [[Buscador alloc] init];
     if ( [self.data1 objectForKey:@"categorias"] != NULL && [self.data1 objectForKey:@"categorias"] != nil ) {
         [self presentViewController:buscador animated:YES completion:nil];

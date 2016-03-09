@@ -53,6 +53,18 @@ struct CGValues {
     // Grid
     @property (retain, nonatomic) NSString *general_grid;
 
+    // Porpertys for advanced grids
+    @property (nonatomic) int divs;
+    @property (nonatomic) int separadores;
+    @property (nonatomic) CGSize div_size;
+    @property (nonatomic) int used_divs;
+    @property (nonatomic) float div_width;
+    @property (nonatomic) float div_height;
+    @property (nonatomic) CGSize box_size;
+
+    @property (nonatomic) int current_div;
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -60,8 +72,9 @@ struct CGValues {
 
     // Constructors & Constructores //
     - (void)start;
+    - (void)startGrid;
     - (id)initFullSize:(UIViewController *)acontroller grid:(NSString *)agrid display:(BOOL )adisplay params:(NSString *)aparams;
-    - (id)initWithSizeWidth:(float)awidth height:(float)aheight controller:(UIViewController *)acontroller grid:(NSString *)agrid display:(BOOL)adisplay params:(NSString *)aparams;
+    - (id)initWithSizeWidth:(float)awidth height:(float)aheight controller:(UIViewController *)acontroller grid:(NSString *)agrid display:(BOOL)adisplay params:(NSMutableDictionary *)aparams;
     - (id)initWithView:(UIView *)aview;
 
     // Frame Values
@@ -74,6 +87,7 @@ struct CGValues {
 
     - (void)addCustom:(UIView *)aview key:(NSString *)akey params:(NSMutableDictionary *)aparams controller:(UIViewController *)acontroller;
 
+    - (void)addSurface:(Surface *)surface key:(NSString *)akey params:(NSMutableDictionary *)aparams controller:(UIViewController *)acontroller;
     // Scroll
     - (void)generateScroll;
 
@@ -90,6 +104,12 @@ struct CGValues {
     - (void)getScreenSize;
     - (void)present;
     - (UIView *)getObject:(NSString *)object;
+    - (Surface *)getSurface:(NSString *)object;
+
+    - (BOOL)checkItem:(NSString *)object;
+    - (void)checkParams:(NSMutableDictionary *)params;
+- (void)modifiedParams:(NSMutableDictionary *)params;
+    - (void)checkCols:(NSString *)col;
 
 
 @end

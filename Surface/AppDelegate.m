@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "Launch.h"
 #import "Buscador.h"
+#import "TestPuppeter.h"
 
 @interface AppDelegate ()
 
@@ -26,18 +27,23 @@
     NSLog(@"y == %f", [[UIScreen mainScreen] bounds].size.height);
     
     ViewController *uno = [[ViewController alloc] init];
-    UINavigationController *unoController = [[UINavigationController alloc] initWithRootViewController:uno];
+    //UINavigationController *unoController = [[UINavigationController alloc] initWithRootViewController:uno];
     
     Launch *launch = [[Launch alloc] init];
     Buscador *buscador = [[Buscador alloc] init];
+    TestPuppeter *test = [[TestPuppeter alloc] init];
     
-    UITabBarController *tab = [[UITabBarController alloc]init];
+    //UITabBarController *tab = [[UITabBarController alloc]init];
     
-    [tab setViewControllers:@[unoController]];
-    self.window.rootViewController = uno;
+    //[tab setViewControllers:@[unoController]];
+    
+   self.window.rootViewController = test;
+   //self.window.rootViewController = launch;
+
     
     
     [self.window makeKeyAndVisible];
+
     return YES;
 }
 

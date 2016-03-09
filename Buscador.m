@@ -51,7 +51,7 @@
         [ids setObject:key[@"id"] forKey:key[@"nombre"]];
 
     }
-    NSLog(@"arreglo %@", muary_Interest_Main);
+    NSLog(@"ids %@ y arreglo %@", ids, muary_Interest_Main);
     
     self.tx1 = [[UITextField alloc] init];
     self.tx1.frame = CGRectMake(-500, 30, 240, 35);
@@ -157,9 +157,9 @@
     } 
     
     NSLog(@"ID === %@", ids[_tx1.text]);
-    launch.hidden = YES;
-    Surface *t = [[Surface alloc] initFullSize:self grid:@"fluid" display:YES params:nil];
-    [t present];
+    //launch.hidden = YES;
+    //Surface *t = [[Surface alloc] initFullSize:self grid:@"fluid" display:YES params:nil];
+    //[t present];
 }
 //////////////////
 
