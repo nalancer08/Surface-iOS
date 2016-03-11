@@ -65,6 +65,9 @@ struct CGValues {
     @property (nonatomic) int current_div;
 
 
+    @property (nonatomic) int tag_button;
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -108,7 +111,7 @@ struct CGValues {
 
     - (BOOL)checkItem:(NSString *)object;
     - (void)checkParams:(NSMutableDictionary *)params;
-- (void)modifiedParams:(NSMutableDictionary *)params;
+    - (void)modifiedParams:(NSMutableDictionary *)params;
     - (void)checkCols:(NSString *)col;
 
 

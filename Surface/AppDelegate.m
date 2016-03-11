@@ -37,7 +37,7 @@
     
     //[tab setViewControllers:@[unoController]];
     
-   self.window.rootViewController = test;
+   self.window.rootViewController = uno;
    //self.window.rootViewController = launch;
 
     

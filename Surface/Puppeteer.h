@@ -12,7 +12,7 @@
 #warning "This library complete depends of Surface"
 #import "Surface.h"
 
-@interface Puppeteer : NSObject
+@interface Puppeteer : UIView
 
 // Properties
 
@@ -40,6 +40,9 @@
 // TabBar
     + (NSDictionary *)newController:(Class) class withTitle:(NSString *)title andImage:(UIImage *)image;
     - (void)setTabBarControllers:(NSArray *)controllers;
-    + (void)tabPress:(UIButton *)sender;
+    - (void)tabPress:(UIButton *)sender;
+
+    - (Surface *)getView;
+    - (void)test;
 
 @end

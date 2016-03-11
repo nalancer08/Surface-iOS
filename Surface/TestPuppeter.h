@@ -11,5 +11,5 @@
 #import "Puppeteer.h"
 
 @interface TestPuppeter : UIViewController
-
+@property (retain, nonatomic) Puppeteer *window;
 @end

@@ -36,6 +36,8 @@
         
         self.tabBar.box.backgroundColor = [UIColor greenColor];
         
+        self.surfaceWidth = self.full.box.bounds.size.width;
+        
         NSMutableDictionary *tab = [NSMutableDictionary dictionaryWithDictionary:@{@"position": @"bottom"}];
         [self.full addSurface:self.tabBar key:@"tabBar" params:tab controller:self.controller];
     }
@@ -84,7 +86,7 @@
     [self.tabBar modifiedParams:numberOfDivs];
     
     
-    NSMutableDictionary *params1 = [NSMutableDictionary dictionaryWithDictionary:@{@"text" : @"hola mundooo!!!", @"function" : [NSValue valueWithPointer:@selector(tabPress:)], @"newClass" : [self class], @"tag" : [NSNumber numberWithInt:1]}];
+    NSMutableDictionary *params1 = [NSMutableDictionary dictionaryWithDictionary:@{@"text" : @"hola mundooo!!!", @"function" : [NSValue valueWithPointer:@selector(tabPress:)], @"newClass" : self, @"tag" : [NSNumber numberWithInt:1]}];
     [self.tabBar add:@"button" width:-1 heigth:self.tabBarHeight key:@"t1" params:params1 controller:self.controller];
     
     /*UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -95,19 +97,20 @@
     [button addTarget:self action:@selector(tabPress:) forControlEvents:UIControlEventTouchUpInside];
     [self.tabBar addCustom:button key:@"t1" params:nil controller:self.controller];
 */
-    NSMutableDictionary *params2 = [NSMutableDictionary dictionaryWithDictionary:@{@"text" : @"lalitas 3000!!!", @"function" : [NSValue valueWithPointer:@selector(tabPress:)], @"newClass" : [self class], @"tag" : [NSNumber numberWithInt:12]}];
+    NSMutableDictionary *params2 = [NSMutableDictionary dictionaryWithDictionary:@{@"text" : @"lalitas 3000!!!", @"function" : [NSValue valueWithPointer:@selector(tabPress:)], @"newClass" : self, @"tag" : [NSNumber numberWithInt:12]}];
     [self.tabBar add:@"button" width:-1 heigth:self.tabBarHeight key:@"t2" params:params2 controller:self.controller];
 
     UIButton *la = (UIButton *)[self.tabBar getObject:@"t2"];
     la.backgroundColor = [UIColor yellowColor];
 }
 
-+ (void)tabPress:(UIButton *)sender {
+- (void)tabPress:(UIButton *)sender {
+    
     NSLog(@"jalando el boton en esta mierda");
     UIButton *tab = (UIButton *)sender;
-    NSLog(@"TAG ==== %ld", (long)tab.tag);
+    (NSLog(@"TAG ==== %ld  controller", (long)tab.tag));
+    
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -116,6 +119,29 @@
     
     return [[NSDictionary alloc] initWithObjectsAndKeys:class, @"controller", title, @"title", image, @"image", nil];
     
+}
+
+- (Surface *)getView {
+    
+    if ( self.tabBar != nil && self.navigationBar != nil ) {
+        //
+    } else if ( self.tabBar != nil && self.navigationBar == nil ) {
+        //
+        NSLog(@"si hay tabBar");
+        float hBody = self.full.box.bounds.size.height - self.tabBarHeight;
+        NSLog(@"pantalla alto %f, tb = %f  final = %f", self.full.box.bounds.size.height, self.tabBarHeight, hBody);
+        self.body = [[Surface alloc] initWithSizeWidth:self.surfaceWidth height:hBody controller:self.controller grid:@"fluid" display:YES params:nil];
+        //
+    } else if ( self.tabBar == nil && self.navigationBar != nil ) {
+        //
+    }
+    
+    return self.body;
+}
+
+
+- (void)test {
+    NSLog(@"si sis sisisisis");
 }
 
 

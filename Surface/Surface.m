@@ -19,6 +19,7 @@
     self.parent = nil;
     self.divs = 0;
     self.div_height = 0;
+    self.tag_button = 0;
     self.children = [[NSMutableDictionary alloc] init];
     
     [self getScreenSize];
@@ -391,6 +392,8 @@
             
             case 3:
                 
+                self.tag_button ++;
+                
                 button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                 [button setTitle:@"boton chido" forState:UIControlStateNormal];
                 [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -398,18 +401,26 @@
                 
                 if ( [aparams objectForKey:@"function"] && [aparams objectForKey:@"newClass"] ) {
                     
-                    NSLog(@"clase nueva == %@", [aparams objectForKey:@"newClass"] );
-                    SEL aSel = [[aparams objectForKey:@"function"] pointerValue];
-                    [button addTarget:[[aparams objectForKey:@"newClass"] class] action:aSel forControlEvents:UIControlEventTouchUpInside];
+                    id c = [aparams objectForKey:@"newClass"];
+                    //Puppeteer *la = (Puppeteer *)c;
+                    //[la test];
                     
-                } else if ( [aparams objectForKey:@"function"] ) {
+                    //NSLog(@"clase nueva == %@", [aparams objectForKey:@"newClass"] );
+                    SEL aSel = [[aparams objectForKey:@"function"] pointerValue];
+                    //aSel = NSSelectorFromString(@"Foo");
+                    
+                    
+                    //[button addTarget:[[aparams objectForKey:@"newClass"] class] action:aSel forControlEvents:UIControlEventTouchUpInside];
+                    [button addTarget:c action:aSel forControlEvents:UIControlEventTouchUpInside];
+                    
+               } else if ( [aparams objectForKey:@"function"] ) {
                     SEL aSel = [[aparams objectForKey:@"function"] pointerValue];
                     [button addTarget:self.vc action:aSel forControlEvents:UIControlEventTouchUpInside];
                 }
                 
-                if ( [aparams objectForKey:@"tag"] ) {
-                    button.tag = self.used_divs;
-                }
+               // if ( [aparams objectForKey:@"tag"] ) {
+                    button.tag = self.tag_button;
+               // }
                 
                 button.frame = frame;
                 child = [[Surface alloc] initWithView:button];
@@ -593,8 +604,8 @@
     
     if ( [params objectForKey:@"colums"] ) {
         
-        NSLog(@"divs viejos === %i", self.divs);
-        NSLog(@"divs nuevos === %d", [[params objectForKey:@"colums"] intValue]);
+        //NSLog(@"divs viejos === %i", self.divs);
+        //NSLog(@"divs nuevos === %d", [[params objectForKey:@"colums"] intValue]);
         
         self.divs = [[params objectForKey:@"colums"] intValue];
     }
@@ -627,6 +638,13 @@
     //NSLog(@"cambiandoooo");
     //self.box.backgroundColor = [UIColor redColor];
     [self.vc.view addSubview:self.box];
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    Puppeteer *copy = [super copy];
+
+    return copy;
 }
 
 @end
