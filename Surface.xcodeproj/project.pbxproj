@@ -10,6 +10,7 @@
 		8832D3F31C90841F00EC1D9C /* WebchimpUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8832D3F21C90841F00EC1D9C /* WebchimpUtilities.m */; };
 		8832D3F61C908EC700EC1D9C /* Puppeteer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8832D3F51C908EC700EC1D9C /* Puppeteer.m */; };
 		8832D3F91C9090AF00EC1D9C /* TestPuppeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8832D3F81C9090AF00EC1D9C /* TestPuppeter.m */; };
+		8838C9ED1C9733ED001F29AF /* TestPuppeter2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8838C9EC1C9733ED001F29AF /* TestPuppeter2.m */; };
 		88B19F171C6A67C200FB0762 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B19F141C6A67C200FB0762 /* Default.png */; };
 		88B19F181C6A67C200FB0762 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B19F151C6A67C200FB0762 /* Default@2x.png */; };
 		88B19F1A1C6A6DF700FB0762 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B19F191C6A6DF700FB0762 /* Default-568h@2x.png */; };
@@ -54,6 +55,8 @@
 		8832D3F51C908EC700EC1D9C /* Puppeteer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Puppeteer.m; sourceTree = "<group>"; };
 		8832D3F71C9090AF00EC1D9C /* TestPuppeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPuppeter.h; sourceTree = "<group>"; };
 		8832D3F81C9090AF00EC1D9C /* TestPuppeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPuppeter.m; sourceTree = "<group>"; };
+		8838C9EB1C9733ED001F29AF /* TestPuppeter2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPuppeter2.h; sourceTree = "<group>"; };
+		8838C9EC1C9733ED001F29AF /* TestPuppeter2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPuppeter2.m; sourceTree = "<group>"; };
 		88B19F141C6A67C200FB0762 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		88B19F151C6A67C200FB0762 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		88B19F191C6A6DF700FB0762 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				A7CD22951C50881F007CE2AC /* AppDelegate.m */,
 				A7CD22971C50881F007CE2AC /* ViewController.h */,
 				A7CD22981C50881F007CE2AC /* ViewController.m */,
+				8838C9EB1C9733ED001F29AF /* TestPuppeter2.h */,
+				8838C9EC1C9733ED001F29AF /* TestPuppeter2.m */,
 				8832D3F71C9090AF00EC1D9C /* TestPuppeter.h */,
 				8832D3F81C9090AF00EC1D9C /* TestPuppeter.m */,
 				A7CD229D1C50881F007CE2AC /* Assets.xcassets */,
@@ -357,6 +362,7 @@
 				8832D3F31C90841F00EC1D9C /* WebchimpUtilities.m in Sources */,
 				88F83B7E1C761E9600F6C551 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				88F83B7A1C761E9600F6C551 /* AFURLRequestSerialization.m in Sources */,
+				8838C9ED1C9733ED001F29AF /* TestPuppeter2.m in Sources */,
 				88E003111C7784E100A85F80 /* Parrot.m in Sources */,
 				88F83B7D1C761E9600F6C551 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				8832D3F61C908EC700EC1D9C /* Puppeteer.m in Sources */,

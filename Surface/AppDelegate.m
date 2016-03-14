@@ -11,6 +11,7 @@
 #import "Launch.h"
 #import "Buscador.h"
 #import "TestPuppeter.h"
+#import "TestPuppeter2.h"
 
 @interface AppDelegate ()
 
@@ -32,12 +33,14 @@
     Launch *launch = [[Launch alloc] init];
     Buscador *buscador = [[Buscador alloc] init];
     TestPuppeter *test = [[TestPuppeter alloc] init];
+    TestPuppeter2 *test2 = [[TestPuppeter2 alloc] init];
     
-    //UITabBarController *tab = [[UITabBarController alloc]init];
     
-    //[tab setViewControllers:@[unoController]];
+    UITabBarController *tab = [[UITabBarController alloc]init];
     
-   self.window.rootViewController = uno;
+    [tab setViewControllers:@[test2]];
+    
+   self.window.rootViewController = tab;
    //self.window.rootViewController = launch;
 
     

@@ -15,6 +15,7 @@
     self.tabBar = nil;
     self.navigationBar = nil;
     self.body = nil;
+    self.tabs = nil;
     
     self.controller = nil;
     
@@ -44,6 +45,37 @@
                                                                  
     return self;
     
+}
+
+- (id)initPersonilized:(UIViewController *)controller hasTabBar:(BOOL)tabBar hasNavigation:(BOOL)navigation {
+    
+    if ( self = [super init] ) {
+        
+        [self start];
+        
+        self.controller = controller;
+        self.myType = @"personalized";
+        
+        [self getTabBarHeight];
+        
+        if ( tabBar && navigation ) {
+            
+            self.surfaceWidth = self.controller.view.bounds.size.width;
+            float height = (self.controller.view.bounds.size.height) - (self.controller.tabBarController.tabBar.frame.size.height) - (self.controller.navigationController.navigationBar.frame.size.height);
+            
+            self.full = [[Surface alloc] initWithSizeWidth:self.surfaceWidth height:height controller:self.controller grid:@"fluid" display:YES params:nil];
+            
+        } else if ( tabBar && !navigation ) {
+            
+            self.surfaceWidth = self.controller.view.bounds.size.width;
+            float height = (self.controller.view.bounds.size.height) - (self.controller.tabBarController.tabBar.frame.size.height);
+            
+            self.full = [[Surface alloc] initWithSizeWidth:self.surfaceWidth height:height controller:self.controller grid:@"fluid" display:YES params:nil];
+        }
+
+    }
+    
+    return self;
 }
 
 
@@ -110,6 +142,9 @@
     UIButton *tab = (UIButton *)sender;
     (NSLog(@"TAG ==== %ld  controller", (long)tab.tag));
     
+    Surface *ojala = self.tabsArray[[NSString stringWithFormat:@"tab%ld", tab.tag]];
+    [ojala present];
+    
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -121,10 +156,68 @@
     
 }
 
++ (NSDictionary *)newTabwithTitle:(NSString *)title andImage:(UIImage *)image {
+    
+    return [[NSDictionary alloc] initWithObjectsAndKeys:title, @"title", image, @"image", nil];
+    
+}
+
++ (NSDictionary *)newPropertie:(NSString *)propertie withValue:(id)value {
+    
+    return [[NSDictionary alloc] initWithObjectsAndKeys:propertie, @"propertie", value, @"value", nil];
+}
+
+//////////////////////////// GENERAL TABS //////////////////////////////
+
+- (NSArray *)makeTabs:(NSArray *)tabs position:(NSString *)aposition {
+    
+    NSLog(@"tabs send == %@", tabs[1]);
+    
+    int i;
+    self.controllers = tabs;
+    int numberdivs = (int)self.controllers.count;
+    NSLog(@"son == %d", numberdivs);
+    self.tabsArray = [[NSMutableDictionary alloc] init];
+    
+    self.tabs = [[Surface alloc] initWithSizeWidth:self.surfaceWidth height:self.tabBarHeight controller:self.controller grid:@"boxes" display:YES params:nil];
+    
+    NSMutableDictionary *numberOfDivs = [NSMutableDictionary dictionaryWithDictionary:@{@"colums": [NSNumber numberWithInt:numberdivs]}];
+    [self.tabs modifiedParams:numberOfDivs];
+    
+    
+    for ( i = 0; i < numberdivs ; i ++ ) {
+        
+        NSMutableDictionary *params1 = [NSMutableDictionary dictionaryWithDictionary:@{@"text" : @"hola mundooo!!!", @"function" : [NSValue valueWithPointer:@selector(tabPress:)], @"newClass" : self, @"tag" : [NSNumber numberWithInt:1]}];
+        [self.tabs add:@"button" width:-1 heigth:self.tabBarHeight key:[NSString stringWithFormat:@"t%d", (i+1)] params:params1 controller:self.controller];
+        
+        Surface *surface = [[Surface alloc] initWithSizeWidth:50 height:50 controller:self.controller grid:@"fluid" display:NO params:nil];
+        
+        [self.tabsArray setObject:surface forKey:[NSString stringWithFormat:@"tab%d", (i+1)]];
+        
+    }
+    
+    
+    UIButton *la = (UIButton *)[self.tabs getObject:@"t2"];
+    la.backgroundColor = [UIColor yellowColor];
+    
+    NSLog(@"arreglo de tabs ====   %@", self.tabsArray);
+    //eri.box.backgroundColor = [UIColor yellowColor];
+    Surface *testing = self.tabsArray[@"tab2"];
+    testing.box.backgroundColor = [UIColor magentaColor];
+    
+    return @[];
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
 - (Surface *)getView {
     
     if ( self.tabBar != nil && self.navigationBar != nil ) {
-        //
+        
+        
     } else if ( self.tabBar != nil && self.navigationBar == nil ) {
         //
         NSLog(@"si hay tabBar");
@@ -138,6 +231,7 @@
     
     return self.body;
 }
+
 
 
 - (void)test {
